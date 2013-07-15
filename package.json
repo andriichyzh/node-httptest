@@ -13,7 +13,7 @@
     },
 
     "dependencies": {
-        "request": "0.15.1"
+        "request": "*"
     },
 
     "keywords": [
