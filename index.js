@@ -12,6 +12,12 @@ module.exports = function(baseUri) {
     var expects = {};
 
     return {
+        /**
+         * POST request
+         *
+         * @param uri
+         * @returns {Object}
+         */
         post: function(uri) {
             if (uri) {
                 params.uri += uri;
@@ -20,6 +26,12 @@ module.exports = function(baseUri) {
             return this;
         },
 
+        /**
+         * GET request
+         *
+         * @param uri
+         * @returns {Object}
+         */
         get: function(uri) {
             if (uri) {
                 params.uri += uri;
@@ -28,6 +40,12 @@ module.exports = function(baseUri) {
             return this;
         },
 
+        /**
+         * PUT request
+         *
+         * @param uri
+         * @returns {Object}
+         */
         put: function(uri) {
             if (uri) {
                 params.uri += uri;
@@ -36,6 +54,12 @@ module.exports = function(baseUri) {
             return this;
         },
 
+        /**
+         * DELETE request
+         *
+         * @param uri
+         * @returns {Object}
+         */
         del: function(uri) {
             if (uri) {
                 params.uri += uri;
@@ -44,6 +68,12 @@ module.exports = function(baseUri) {
             return this;
         },
 
+        /**
+         * Body for POST, PUT, DELETE
+         *
+         * @param body
+         * @returns {Object}
+         */
         body: function(body) {
             if (body) {
                 params.body = (und.isObject(body)) ? JSON.stringify(body) : body;
@@ -73,14 +103,16 @@ module.exports = function(baseUri) {
                     return;
                 }
 
+                var res;
+
                 if (expects.status) {
                     assert.equal(response.statusCode, expects.status, 'Error response status code!');
                 }
 
                 if (1) {
-                    var res = JSON.parse(body);
+                    res = JSON.parse(body);
                 } else {
-                    var res = body;
+                    res = body;
                 }
 
                 callback(error, res);
@@ -88,4 +120,4 @@ module.exports = function(baseUri) {
 
         }
     };
-}
+};
