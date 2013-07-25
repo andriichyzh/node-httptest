@@ -1,4 +1,5 @@
-var request = require('request'),
+var querystring = require('querystring'),
+    request = require('request'),
     assert = require('assert');
 
 module.exports = function(baseUri) {
@@ -76,14 +77,18 @@ module.exports = function(baseUri) {
          */
         body: function(body) {
             if (body) {
-                params.body = (und.isObject(body)) ? JSON.stringify(body) : body;
+                params.body = querystring.stringify(body);
+                params.headers = {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Length': params.body.length
+                };
             }
             return this;
         },
 
         headers: function(headers) {
             if (headers) {
-                params.headers = und.extend(params.headers, headers);
+                params.headers = headers;
             }
             return this;
         },
