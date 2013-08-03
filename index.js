@@ -1,6 +1,7 @@
 var querystring = require('querystring'),
     request = require('request'),
-    assert = require('assert');
+    assert = require('assert'),
+    lodash = require('lodash');
 
 module.exports = function(baseUri) {
     'use strict';
@@ -13,6 +14,7 @@ module.exports = function(baseUri) {
     var expects = {};
 
     return {
+
         /**
          * POST request
          *
@@ -101,7 +103,6 @@ module.exports = function(baseUri) {
         },
 
         end: function(callback) {
-
             request(params, function(error, response, body) {
                 if (error) {
                     callback(error, null);
@@ -114,7 +115,7 @@ module.exports = function(baseUri) {
                     assert.equal(response.statusCode, expects.status, 'Error response status code!');
                 }
 
-                if (1) {
+                if (body && lodash.isObject(body)) {
                     res = JSON.parse(body);
                 } else {
                     res = body;

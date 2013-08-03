@@ -1,10 +1,20 @@
 {
     "name": "httptest",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Simply library for testing HTTP servers",
 
     "author": "Andrey Chizh",
     "license": "MIT",
+
+    "keywords": [
+        "tdd",
+        "bdd",
+        "http",
+        "api",
+        "rest",
+        "test",
+        "testing"
+    ],
 
     "main": "index.js",
 
@@ -13,17 +23,8 @@
     },
 
     "dependencies": {
-        "request": "*"
-    },
-
-    "keywords": [
-        "request",
-        "tdd",
-        "bdd",
-        "http",
-        "rest",
-        "test",
-        "testing"
-    ]
+        "request": "latest",
+        "lodash": "latest"
+    }
 
 }
