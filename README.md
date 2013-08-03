@@ -1,4 +1,4 @@
-HTTP Test
+HTTP Test [![Build Status](https://travis-ci.org/andreychizh/node-httptest.png?branch=master)](https://travis-ci.org/andreychizh/node-httptest)
 =============
 Simply library for testing HTTP services
 
