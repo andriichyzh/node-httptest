@@ -88,6 +88,12 @@ module.exports = function(baseUri) {
             return this;
         },
 
+        /**
+         * Set custom headers
+         *
+         * @param headers
+         * @returns {*}
+         */
         headers: function(headers) {
             if (headers) {
                 params.headers = headers;
@@ -95,6 +101,12 @@ module.exports = function(baseUri) {
             return this;
         },
 
+        /**
+         * Set expected HTTP status code
+         *
+         * @param status
+         * @returns {*}
+         */
         expect: function(status) {
             if (status) {
                 expects.status = status;
@@ -102,6 +114,24 @@ module.exports = function(baseUri) {
             return this;
         },
 
+        /**
+         * Check max response time, in ms
+         *
+         * @param time
+         * @returns {*}
+         */
+        time: function(time) {
+            if (time) {
+                expects.time = new Date() + time;
+            }
+            return this;
+        },
+
+        /**
+         * Final method, provide request
+         *
+         * @param callback
+         */
         end: function(callback) {
             request(params, function(error, response, body) {
                 if (error) {
@@ -113,6 +143,11 @@ module.exports = function(baseUri) {
 
                 if (expects.status) {
                     assert.equal(response.statusCode, expects.status, 'Error response status code!');
+                }
+
+                if (expects.time) {
+                    var now = new Date();
+                    assert.ok(now <= expects.time, 'Too long response time!');
                 }
 
                 if (body && lodash.isObject(body)) {
