@@ -1,4 +1,4 @@
-var httptest = require('..');
+var httptest = require('../lib');
 
 describe('HTTP Test', function(){
 

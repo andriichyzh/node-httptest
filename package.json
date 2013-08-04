@@ -21,7 +21,7 @@
         "url" : "https://github.com/andreychizh/node-httptest.git"
     },
 
-    "main": "index.js",
+    "main": "lib/index.js",
 
     "scripts": {
         "test": "make test"
