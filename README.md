@@ -8,7 +8,7 @@ Install:
 
 Simply use:
 
-    var httptest = requre('httptest');
+    var httptest = require('httptest');
 
     httptest('https://tutsplus.com')
         .get('/courses')

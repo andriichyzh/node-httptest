@@ -30,6 +30,10 @@
     "dependencies": {
         "request": "latest",
         "lodash": "latest"
+    },
+
+    "devDependencies": {
+        "mocha": "latest"
     }
 
 }
