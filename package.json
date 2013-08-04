@@ -24,7 +24,7 @@
     "main": "lib/index.js",
 
     "scripts": {
-        "test": "make test"
+        "test": "grunt test"
     },
 
     "dependencies": {
@@ -33,7 +33,12 @@
     },
 
     "devDependencies": {
-        "mocha": "latest"
+        "mocha": "latest",
+        "express": "latest",
+        "grunt": "latest",
+        "grunt-cli": "latest",
+        "grunt-express-server": "latest",
+        "grunt-mocha-test": "latest"
     }
 
 }
