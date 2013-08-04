@@ -1,6 +1,6 @@
 {
     "name": "httptest",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "Simply library for testing HTTP servers",
 
     "author": "Andrey Chizh",
