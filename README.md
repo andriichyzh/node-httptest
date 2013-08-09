@@ -16,4 +16,3 @@ Simply use:
         .end(function(err, res) {
             if (err) throw err;
         });
-
