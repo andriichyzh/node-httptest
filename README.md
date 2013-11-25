@@ -2,11 +2,11 @@ HTTP Test [![Build Status](https://travis-ci.org/andreychizh/node-httptest.png?b
 =============
 Simply library for testing HTTP services
 
-Install:
+## Install:
 
     npm install httptest --save
 
-Simply use:
+## Simply use:
 
     var httptest = require('httptest');
 
@@ -17,3 +17,8 @@ Simply use:
             if (err) throw err;
         });
 
+## Package manager page
+
+See [npm]
+
+[npm]: https://npmjs.org/package/shortlink
