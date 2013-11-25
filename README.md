@@ -21,4 +21,4 @@ Simply library for testing HTTP services
 
 See [npm]
 
-[npm]: https://npmjs.org/package/shortlink
+[npm]: https://npmjs.org/package/httptest
