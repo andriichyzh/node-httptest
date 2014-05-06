@@ -1,53 +1,83 @@
-HTTP Test [![Build Status](https://travis-ci.org/andreychizh/node-httptest.png?branch=master)](https://travis-ci.org/andreychizh/node-httptest)
+HTTP Test [![Build Status](https://travis-ci.org/andreychizh/node-httptest.svg?branch=master)](https://travis-ci.org/andreychizh/node-httptest)
 =============
-Simply library for testing HTTP services
+Simply library for powerful and easy testing REST API
 
 ## Install:
-
-    npm install httptest --save
+```bash
+$ npm install httptest --save-dev
+```
 
 ## Example:
+```js
+var httptest = require('httptest');
 
-    var httptest = require('httptest');
-
-    httptest('https://api.github.com/repos/andreychizh/')
-        .get('/node-httptest')
-        .setParams('version', 123)
-        .setHeader('User-Agent', 'Firefox');
-        .expectStatus(200)
-        .expectJSON()
-        .end(function(err, res) {
-            if (err) throw err;
-            console.log(res);
-        });
-
+httptest('https://api.github.com/repos/andreychizh/')
+    .get('/node-httptest')
+    .setParams('version', 123)
+    .setHeader('User-Agent', 'Firefox');
+    .expectStatus(200)
+    .expectJSON()
+    .end(function(err, res) {
+        if (err) throw err;
+        console.log(res);
+    });
+```
 ## API:
 
-### Create new test or tests group
+### Create request or group of request object
+```js
+var http = httptest('localhost:3000');
+```
 
-    httptest(uri)
+### Set HTTP method
 
-### HTTP methods
+Support most HTTP methods:
+```js
+// POST
+post('/api/1.0/cars')
 
-Support all HTTP methods: GET, POST, PUT, PATCH, HEAD, DELETE
+// GET
+get('/api/1.0/cars')
+
+// HEAD
+head('/api/1.0/cars/123')
+
+// PUT
+put('/api/1.0/cars/123')
+
+// PATCH
+patch('/api/1.0/cars/123')
+
+// DELETE
+del('/api/1.0/cars/123')
+```
 
 ### Set GET params
+```js
+// As object
+setParam({sort: 'asc'})
 
-    // As object
-    setParam({sort: 'asc'})
-
-    // As key-value
-    setParam('sort', 'asc')
-
+// As key-value
+setParam('sort', 'asc')
+```
 
 ### Set POST, PUT, PATCH body
+```js
+// As object
+setBody({vendor: 'BMW', model: 'M5'})
 
-    // As object
-    setHeader({'User-Agent': 'Firefox'})
+// As string
+setBody('')
+```
 
-    // As key-value
-    setHeader('User-Agent', 'Firefox')
+### Set headers
+```js
+// As object
+setHeader({'User-Agent': 'Firefox'})
 
+// As key-value
+setHeader('User-Agent', 'Firefox')
+```
 
 ## Package manager page
 
