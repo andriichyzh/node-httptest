@@ -1,6 +1,6 @@
 {
     "name": "httptest",
-    "version": "0.0.8",
+    "version": "0.1.0",
     "description": "Simply library for testing HTTP servers",
 
     "author": "Andrey Chizh",
@@ -21,7 +21,7 @@
         "url" : "https://github.com/andreychizh/node-httptest.git"
     },
 
-    "main": "lib/index.js",
+    "main": "lib/index-old.js",
 
     "scripts": {
         "test": "./node_modules/.bin/grunt test"

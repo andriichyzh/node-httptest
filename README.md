@@ -1,24 +1,29 @@
 HTTP Test [![Build Status](https://travis-ci.org/andreychizh/node-httptest.png?branch=master)](https://travis-ci.org/andreychizh/node-httptest)
 =============
-Simply JavaScript library for testing HTTP services
+Simply library for testing HTTP services
 
 ## Install:
 
     npm install httptest --save
 
-## Simply use:
+## Example:
 
     var httptest = require('httptest');
 
-    httptest('https://tutsplus.com')
-        .get('/courses')
-        .expect(200)
+    httptest('https://api.github.com/repos/andreychizh/')
+        .get('/node-httptest')
+        .setHeader('User-Agent', 'Firefox');
+        .expectStatus(200)
+        .expectJSON()
         .end(function(err, res) {
             if (err) throw err;
+            console.log(res);
         });
 
 ## Package manager page
 
-See [npm]
+[![NPM](https://nodei.co/npm/httptest.png?downloads=true)](https://nodei.co/npm/httptest/)
+
+Direct link [npm]
 
 [npm]: https://npmjs.org/package/httptest
