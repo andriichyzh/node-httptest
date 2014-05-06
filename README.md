@@ -12,6 +12,7 @@ Simply library for testing HTTP services
 
     httptest('https://api.github.com/repos/andreychizh/')
         .get('/node-httptest')
+        .setParams('version', 123)
         .setHeader('User-Agent', 'Firefox');
         .expectStatus(200)
         .expectJSON()
