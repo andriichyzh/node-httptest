@@ -169,7 +169,7 @@ httptest('http://localhost:3000/')
 
 ## Workflow
 
-Possible to create a common options for a group of requests
+Possible to create a common options for a group of requests. Also support override of params, headers, body, expect.
 
 ```js
 var httptest = require('httptest');
@@ -192,7 +192,6 @@ http.get('/api/cars')
     
 // Test 2
 http.get('/api/cars/123')
-    .setParam('userId', '222')  // Override base options
     .setParam('fields', 'vendor')
     .end(function(err, res) {
         if (err) throw err;
@@ -202,6 +201,7 @@ http.get('/api/cars/123')
 // Test 3
 http.get('/api/cars/456')
     .setParam('fields', 'model')
+    .setParam('userId', '222')  // Override base options
     .end(function(err, res) {
         if (err) throw err;
         console.log(res);
