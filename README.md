@@ -1,4 +1,8 @@
-HTTP Test [![Build Status](https://travis-ci.org/andreychizh/node-httptest.svg?branch=master)](https://travis-ci.org/andreychizh/node-httptest)
+HTTP Test [![NPM version][npm-image]][npm-url][![Build Status](https://travis-ci.org/andreychizh/node-httptest.svg?branch=master)](https://travis-ci.org/andreychizh/node-httptest)
+
+[npm-url]: https://npmjs.org/package/httptest
+[npm-image]: http://img.shields.io/npm/v/httptest.svg
+
 =============
 Simply library for powerful and easy testing REST API
 
