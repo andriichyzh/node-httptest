@@ -212,6 +212,12 @@ http.get('/api/cars/456')
 
 [![NPM](https://nodei.co/npm/httptest.png?downloads=true)](https://nodei.co/npm/httptest/)
 
-Direct link [npm]
+Direct link to the [package]
 
-[npm]: https://npmjs.org/package/httptest
+[package]: https://npmjs.org/package/httptest
+
+## License
+
+Released under the [MIT] license. Copyright (c) 2014 Andrey Chizh.
+
+[MIT]: https://raw.github.com/andreychizh/node-httptest/master/LICENSE.md
