@@ -178,7 +178,7 @@ var httptest = require('httptest');
 var http = httptest('http://localhost:3000/')
     .setHeader('User-Agent', 'Firefox')
     .setParam('token', 'secret_key')
-    .setParam('userId', '100')
+    .setParam('userId', '111')
     .expectStatus(200)
     .expectJSON();
     
@@ -192,7 +192,7 @@ http.get('/api/cars')
     
 // Test 2
 http.get('/api/cars/123')
-    .setParam('userId', '100')  // Override base options
+    .setParam('userId', '222')  // Override base options
     .setParam('fields', 'vendor')
     .end(function(err, res) {
         if (err) throw err;
