@@ -146,7 +146,7 @@ httptest('http://localhost:3000/')
 
 ### .expectJSON()
 
-Check type of response and if it correct - parse JSON to JavaScript object. This will in `res` parameter in `.end(fn)`.
+Checks the type of the response data. Method also parse JSON and return JavaScript object as `res` on `.end(callback)`.
 
 ```js
 httptest('http://localhost:3000/')
@@ -154,9 +154,9 @@ httptest('http://localhost:3000/')
     .expectJSON()
 ```
 
-### .end(fn)
+### .end(callback)
 
-Perform request with given options. Invoke function(err, res) {}.
+Perform request with given options. Invoke callback(err, res).
 
 ```js
 httptest('http://localhost:3000/')
