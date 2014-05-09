@@ -22,7 +22,7 @@ var httptest = require('httptest');
 
 httptest('https://api.github.com/repos/andreychizh/')
     .get('/node-httptest')
-    .setParams('version', 123)
+    .setParam('version', 123)
     .setHeader('User-Agent', 'Firefox');
     .expectStatus(200)
     .expectJSON()
