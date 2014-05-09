@@ -1,10 +1,13 @@
-# HTTP Test [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url]
+# HTTP Test [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][david-image]][david-url]
 
 [npm-url]: https://npmjs.org/package/httptest
 [npm-image]: http://img.shields.io/npm/v/httptest.svg
 
 [travis-url]: https://travis-ci.org/andreychizh/node-httptest
 [travis-image]: https://travis-ci.org/andreychizh/node-httptest.svg?branch=master
+
+[david-url]: https://david-dm.org/andreychizh/node-httptest
+[david-image]: https://david-dm.org/andreychizh/node-httptest.svg?theme=shields.io
 
 Simply library for powerful and easy testing REST API
 
