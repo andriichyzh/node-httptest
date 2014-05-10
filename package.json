@@ -24,7 +24,7 @@
     "main": "lib/index.js",
 
     "scripts": {
-        "test": "./node_modules/.bin/grunt test"
+        "test": "./node_modules/.bin/mocha ./tests/unit --reporter spec"
     },
 
     "dependencies": {
@@ -34,6 +34,7 @@
 
     "devDependencies": {
         "mocha": "latest",
+        "should": "latest",
         "express": "latest",
         "grunt": "latest",
         "grunt-cli": "latest",
