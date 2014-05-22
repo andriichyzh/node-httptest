@@ -2,19 +2,22 @@
 var httptest = require('./../lib/index');
 
 
-var http = httptest('https://api.github.com/repos/andreychizh/')
+var http = httptest('https://api.github.com/repos/andreychizh/');
 
-http.setHeader('User-Agent', 'Firefox 29');
+console.log(http);
 
-http.get('/node-httptest')
-    .setParam({query: 'testing', sort: 'asc'})
-    .setHeader('Cache-Control', 'max-age=0')
-    .expectStatus(200)
-    .expectJSON()
-    .end(function(err, res) {
-        if (err) throw err;
-        console.log(res);
-    });
+
+//http.setHeader('User-Agent', 'Firefox 29');
+//
+//http.get('/node-httptest')
+//    .setParam({query: 'testing', sort: 'asc'})
+//    .setHeader('Cache-Control', 'max-age=0')
+//    .expectStatus(200)
+//    .expectJSON()
+//    .end(function(err, res) {
+//        if (err) throw err;
+//        console.log(res);
+//    });
 
 //http.get('/node-shortlink')
 //    .setParam({query: 'testing', sort: 'asc'})
