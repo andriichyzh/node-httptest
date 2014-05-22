@@ -227,6 +227,6 @@ Direct link to the [package]
 
 ## License
 
-Released under the [MIT] license. Copyright (c) 2014 Andrey Chizh.
+Released under the [MIT] license. Copyright (c) 2013-2014 Andrey Chizh.
 
 [MIT]: https://raw.github.com/andreychizh/node-httptest/master/LICENSE.md
