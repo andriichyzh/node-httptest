@@ -32,21 +32,32 @@ describe('httptest', function() {
 
     describe('#setParams()', function() {
 
-        it('should set common param (key-value)', function() {
+        it('should set common params (key-value)', function() {
             var http = httptest(testUri)
                 .setParams('test', '123');
 
             http.option.common.params.should.property('test', '123');
         });
 
-        it('should set common param (object with 1 param)', function() {
+        it('should set common params (key-value 3 times)', function() {
+            var http = httptest(testUri)
+                .setParams('test', '123')
+                .setParams('user', 'John')
+                .setParams('sort', 'asc');
+
+            http.option.common.params.should.property('test', '123');
+            http.option.common.params.should.property('user', 'John');
+            http.option.common.params.should.property('sort', 'asc');
+        });
+
+        it('should set common params (object with 1 para)', function() {
             var http = httptest(testUri)
                 .setParams({ test: '123' });
 
             http.option.common.params.should.property('test', '123');
         });
 
-        it('should set common param (object with many params)', function() {
+        it('should set common params (object with many params)', function() {
             var http = httptest(testUri)
                 .setParams({
                     test: '123',
@@ -57,6 +68,48 @@ describe('httptest', function() {
             http.option.common.params.should.property('test', '123');
             http.option.common.params.should.property('user', 'John');
             http.option.common.params.should.property('sort', 'asc');
+        });
+
+        it('should set current params (key-value)', function() {
+            var http = httptest(testUri)
+                .get()
+                .setParams('test', '123');
+
+            http.option.current.params.should.property('test', '123');
+        });
+
+        it('should set current params (key-value 3 times)', function() {
+            var http = httptest(testUri)
+                .get()
+                .setParams('test', '123')
+                .setParams('user', 'John')
+                .setParams('sort', 'asc');
+
+            http.option.current.params.should.property('test', '123');
+            http.option.current.params.should.property('user', 'John');
+            http.option.current.params.should.property('sort', 'asc');
+        });
+
+        it('should set current params (object with 1 param)', function() {
+            var http = httptest(testUri)
+                .get()
+                .setParams({ test: '123' });
+
+            http.option.current.params.should.property('test', '123');
+        });
+
+        it('should set current params (object with many params)', function() {
+            var http = httptest(testUri)
+                .get()
+                .setParams({
+                    test: '123',
+                    user: 'John',
+                    sort: 'asc'
+                });
+
+            http.option.current.params.should.property('test', '123');
+            http.option.current.params.should.property('user', 'John');
+            http.option.current.params.should.property('sort', 'asc');
         });
 
     });
@@ -132,6 +185,14 @@ describe('httptest', function() {
             http.expect.common.status.should.equal(200);
         });
 
+        it('should set current expect status code value', function() {
+            var http = httptest(testUri)
+                .get()
+                .expectStatus(200);
+
+            http.expect.current.status.should.equal(200);
+        });
+
     });
 
     describe('#expectJSON()', function() {
@@ -141,6 +202,14 @@ describe('httptest', function() {
                 .expectJSON();
 
             http.expect.common.type.should.equal('json');
+        });
+
+        it('should set current expect type JSON value', function() {
+            var http = httptest(testUri)
+                .get()
+                .expectJSON();
+
+            http.expect.current.type.should.equal('json');
         });
 
     });
