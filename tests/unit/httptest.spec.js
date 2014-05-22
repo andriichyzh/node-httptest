@@ -112,6 +112,35 @@ describe('httptest', function() {
             http.option.current.params.should.property('sort', 'asc');
         });
 
+        it('should set common and current params (key-value)', function() {
+            var http = httptest(testUri)
+                .setParams('test', '456')
+                .get()
+                .setParams('test', '123');
+
+            http.option.common.params.should.property('test', '456');
+            http.option.current.params.should.property('test', '123');
+        });
+
+        it('should set common and current params (key-value 3 times)', function() {
+            var http = httptest(testUri)
+                .setParams('test', '123')
+                .setParams('user', 'John')
+                .setParams('sort', 'asc')
+                .get()
+                .setParams('test', '456')
+                .setParams('user', 'Ann')
+                .setParams('sort', 'desc');
+
+            http.option.common.params.should.property('test', '123');
+            http.option.common.params.should.property('user', 'John');
+            http.option.common.params.should.property('sort', 'asc');
+
+            http.option.current.params.should.property('test', '456');
+            http.option.current.params.should.property('user', 'Ann');
+            http.option.current.params.should.property('sort', 'desc');
+        });
+
     });
 
     describe('#setHeaders()', function() {
@@ -276,6 +305,16 @@ describe('httptest', function() {
             http.expect.current.status.should.equal(200);
         });
 
+        it('should set common and current expect status code value', function() {
+            var http = httptest(testUri)
+                .expectStatus(201)
+                .get()
+                .expectStatus(200);
+
+            http.expect.common.status.should.equal(201);
+            http.expect.current.status.should.equal(200);
+        });
+
     });
 
     describe('#expectJSON()', function() {
@@ -292,6 +331,16 @@ describe('httptest', function() {
                 .get()
                 .expectJSON();
 
+            http.expect.current.type.should.equal('json');
+        });
+
+        it('should set common and current expect type JSON value', function() {
+            var http = httptest(testUri)
+                .expectJSON()
+                .get()
+                .expectJSON();
+
+            http.expect.common.type.should.equal('json');
             http.expect.current.type.should.equal('json');
         });
 
