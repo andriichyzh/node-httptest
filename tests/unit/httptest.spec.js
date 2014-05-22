@@ -123,6 +123,17 @@ describe('httptest', function() {
             http.option.common.headers.should.property('Content-Type', 'text/html');
         });
 
+        it('should set common headers (key-value 3 times)', function() {
+            var http = httptest(testUri)
+                .setHeaders('Content-Type', 'text/html')
+                .setHeaders('Cache-Control', 'max-age=0')
+                .setHeaders('Transfer-Encoding', 'chunked');
+
+            http.option.common.headers.should.property('Content-Type', 'text/html');
+            http.option.common.headers.should.property('Cache-Control', 'max-age=0');
+            http.option.common.headers.should.property('Transfer-Encoding', 'chunked');
+        });
+
         it('should set common headers (object with 1 param)', function() {
             var http = httptest(testUri)
                 .setHeaders({'Content-Type': 'text/html'});
@@ -141,6 +152,48 @@ describe('httptest', function() {
             http.option.common.headers.should.property('Content-Type', 'text/html');
             http.option.common.headers.should.property('Cache-Control', 'max-age=0');
             http.option.common.headers.should.property('Transfer-Encoding', 'chunked');
+        });
+
+        it('should set current headers (key-value)', function() {
+            var http = httptest(testUri)
+                .get()
+                .setHeaders('Content-Type', 'text/html');
+
+            http.option.current.headers.should.property('Content-Type', 'text/html');
+        });
+
+        it('should set current headers (key-value 3 times)', function() {
+            var http = httptest(testUri)
+                .get()
+                .setHeaders('Content-Type', 'text/html')
+                .setHeaders('Cache-Control', 'max-age=0')
+                .setHeaders('Transfer-Encoding', 'chunked');
+
+            http.option.current.headers.should.property('Content-Type', 'text/html');
+            http.option.current.headers.should.property('Cache-Control', 'max-age=0');
+            http.option.current.headers.should.property('Transfer-Encoding', 'chunked');
+        });
+
+        it('should set current headers (object with 1 param)', function() {
+            var http = httptest(testUri)
+                .get()
+                .setHeaders({'Content-Type': 'text/html'});
+
+            http.option.current.headers.should.property('Content-Type', 'text/html');
+        });
+
+        it('should set current headers (object with many params)', function() {
+            var http = httptest(testUri)
+                .get()
+                .setHeaders({
+                    'Content-Type': 'text/html',
+                    'Cache-Control': 'max-age=0',
+                    'Transfer-Encoding': 'chunked'
+                });
+
+            http.option.current.headers.should.property('Content-Type', 'text/html');
+            http.option.current.headers.should.property('Cache-Control', 'max-age=0');
+            http.option.current.headers.should.property('Transfer-Encoding', 'chunked');
         });
 
     });
@@ -172,6 +225,36 @@ describe('httptest', function() {
             http.option.common.form.should.property('user', 'admin');
             http.option.common.form.should.property('pass', '123abc');
             http.option.common.form.should.property('lang', 'UA');
+        });
+
+        it('should set current body (string)', function() {
+            var http = httptest(testUri)
+                .post()
+                .setBody('test body data');
+
+            http.option.current.body.should.equal('test body data');
+        });
+
+        it('should set current body (object with 1 param)', function() {
+            var http = httptest(testUri)
+                .post()
+                .setBody({'user': 'admin'});
+
+            http.option.current.form.should.property('user', 'admin');
+        });
+
+        it('should set current body (object with many params)', function() {
+            var http = httptest(testUri)
+                .post()
+                .setBody({
+                    'user': 'admin',
+                    'pass': '123abc',
+                    'lang': 'UA'
+                });
+
+            http.option.current.form.should.property('user', 'admin');
+            http.option.current.form.should.property('pass', '123abc');
+            http.option.current.form.should.property('lang', 'UA');
         });
 
     });
