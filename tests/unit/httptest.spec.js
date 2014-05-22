@@ -11,25 +11,21 @@ describe('httptest', function() {
         it('should return object (without set URI)', function() {
             var http = httptest();
             http.should.be.type('object');
-            http.should.have.keys('option', 'expect');
         });
 
         it('should return object (set URI as empty string)', function() {
             var http = httptest('');
             http.should.be.type('object');
-            http.should.have.keys('option', 'expect');
         });
 
         it('should return object (set correct URI)', function() {
             var http = httptest(testUri);
             http.should.be.type('object');
-            http.should.have.keys('option', 'expect');
         });
 
         it('should set URI in common options', function() {
             var http = httptest(testUri);
-            var commonUri = http.option.common.uri;
-            commonUri.should.equal(testUri);
+            http.option.common.uri.should.equal(testUri);
         });
 
     });
@@ -123,6 +119,28 @@ describe('httptest', function() {
             http.option.common.form.should.property('user', 'admin');
             http.option.common.form.should.property('pass', '123abc');
             http.option.common.form.should.property('lang', 'UA');
+        });
+
+    });
+
+    describe('#expectStatus()', function() {
+
+        it('should set common expect status code value', function() {
+            var http = httptest(testUri)
+                .expectStatus(200);
+
+            http.expect.common.status.should.equal(200);
+        });
+
+    });
+
+    describe('#expectJSON()', function() {
+
+        it('should set common expect type JSON value', function() {
+            var http = httptest(testUri)
+                .expectJSON();
+
+            http.expect.common.type.should.equal('json');
         });
 
     });
