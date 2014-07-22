@@ -240,7 +240,7 @@ describe('httptest', function() {
             var http = httptest(testUri)
                 .setBody({'user': 'admin'});
 
-            http.option.common.form.should.property('user', 'admin');
+            http.option.common.json.should.property('user', 'admin');
         });
 
         it('should set common body (object with many params)', function() {
@@ -251,9 +251,9 @@ describe('httptest', function() {
                     'lang': 'UA'
                 });
 
-            http.option.common.form.should.property('user', 'admin');
-            http.option.common.form.should.property('pass', '123abc');
-            http.option.common.form.should.property('lang', 'UA');
+            http.option.common.json.should.property('user', 'admin');
+            http.option.common.json.should.property('pass', '123abc');
+            http.option.common.json.should.property('lang', 'UA');
         });
 
         it('should set current body (string)', function() {
@@ -269,7 +269,7 @@ describe('httptest', function() {
                 .post()
                 .setBody({'user': 'admin'});
 
-            http.option.current.form.should.property('user', 'admin');
+            http.option.current.json.should.property('user', 'admin');
         });
 
         it('should set current body (object with many params)', function() {
@@ -281,9 +281,9 @@ describe('httptest', function() {
                     'lang': 'UA'
                 });
 
-            http.option.current.form.should.property('user', 'admin');
-            http.option.current.form.should.property('pass', '123abc');
-            http.option.current.form.should.property('lang', 'UA');
+            http.option.current.json.should.property('user', 'admin');
+            http.option.current.json.should.property('pass', '123abc');
+            http.option.current.json.should.property('lang', 'UA');
         });
 
     });
